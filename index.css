@@ -1,0 +1,244 @@
+
+:root{
+    --sidebar-bg: #fff;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Roboto','sans-serif';
+}
+
+/* Body */
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main */
+main{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 0.5rem;
+    border-bottom: 1px dashed #262632;
+}
+
+header #logo h1{
+    font-family: 'Tilt Prism', cursive;
+}
+
+/* Main Section */
+#main-section{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+#main-section #sidebar{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px dashed #262632;
+}
+
+#sidebar #new-sequence{
+    padding: 0.75rem;
+    margin: 0.5rem auto;
+    background-color: #eee;
+    cursor: pointer;
+    border-radius: 0.5rem;
+}
+
+#sidebar #new-sequence:hover{
+    background-color: tomato;
+    color: #fff;
+}
+
+#sidebar h3{
+    margin: 0.5rem 0;
+    text-align: center;
+}
+
+#sidebar #sequence-history{
+    padding: 1rem;
+    margin: 0.5rem 0;
+    display: flex;
+    flex-direction: column-reverse;
+    border-top: 1px dashed #262632;
+}
+
+#sidebar #sequence-history .sequence-history-box{
+    display: inline-flex;
+    justify-content: start;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    position: relative;
+    padding: 1rem;
+}
+
+#sidebar #sequence-history .sequence-history-box:hover{
+    background-color: #eee;
+}
+
+.active-history{
+    background-color: #eee;
+}
+
+#sidebar #sequence-history .sequence-history-box p{
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#sidebar #sequence-history .sequence-history-box .controls{
+    display: inline-flex;
+    font-size: 1.5rem;
+    margin: auto;
+}
+
+#sidebar #sequence-history .sequence-history-box .controls i{
+    margin: 0 0.25rem;
+}
+
+#sidebar #sequence-history .sequence-history-box .controls i:hover{
+    color: tomato;
+}
+
+#main-section #canvas{
+    width: 75%;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+
+}
+
+#main-section #canvas .sequence-folder{
+    display: flex;
+    flex-direction: column;
+}
+
+#main-section #canvas .sequence-folder h2{
+    text-align: center;
+    margin: 0.25rem 0;
+}
+
+#canvas-controls{
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+}
+
+#canvas-controls div{
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem;
+    cursor: pointer;
+    justify-content: center;
+}
+
+#canvas-controls div:hover{
+    background-color: tomato;
+    color: #fff;
+}
+
+#canvas-controls div i{
+    font-size: 1.5rem;
+}
+
+
+#canvas-controls .vertical{
+    width: 2.5px;
+    height: 100%;
+    padding: 0;
+    background-color: black;
+    cursor: auto;
+}
+
+#canvas #sequence-container{
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#canvas .sequence-box{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    box-shadow: 1px 1px 3px #23233230;
+}
+
+#canvas .sequence-box .top-section{
+    display: flex;
+    flex-direction: column;
+}
+
+#canvas .sequence-box .top-section input{
+    padding: 0.25rem;
+}
+
+#canvas .sequence-box .top-section button{
+    width: 50%;
+    padding: 0.25rem;
+    margin: 0.75rem auto;
+}
+
+#canvas .sequence-box .top-section i{
+    text-align: center;
+    padding: 0.25rem;
+    cursor: pointer;
+}
+
+#canvas .sequence-box .top-section i:hover{
+    color: tomato;
+}
+
+#canvas .sequence-box .bottom-section{
+    display: flex;
+    flex-direction: column;
+}
+
+#canvas .sequence-box .bottom-section .tree-container{
+    display: flex;
+    flex-direction: column;
+}
+
+#canvas .sequence-box .bottom-section .tree-layer{
+    width: 75%;
+    margin: auto;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#canvas .sequence-box .bottom-section .tree-layer div{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    margin: 5px;
+    box-shadow: 1px 1px 3px #23233230;
+}
+
+#canvas .sequence-box .bottom-section .tree-layer div p{
+    margin: auto;
+}
+
+
