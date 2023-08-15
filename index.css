@@ -230,8 +230,8 @@ header #logo h1{
 }
 
 #canvas .sequence-box .bottom-section .tree-layer div{
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
     display: flex;
     margin: 5px;
     box-shadow: 1px 1px 3px #23233230;
