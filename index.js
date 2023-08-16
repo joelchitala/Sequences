@@ -285,7 +285,7 @@ new_sequence_btn.onclick = (e) =>{
 
             save_gen_terms.onclick = (e) =>{
                 console.log(generated_terms.innerText);
-                copy_to_clipboard(generated_terms.innerText.replace("[","").replace("]",""))
+                copy_to_clipboard(generated_terms.innerText.replace("Generated Terms: [","").replace("]",""))
             }
 
             sumbit.onclick = (e) =>{
