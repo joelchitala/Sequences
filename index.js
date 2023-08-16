@@ -284,7 +284,6 @@ new_sequence_btn.onclick = (e) =>{
             const sumbit = sequence_box.querySelector(".sumbit")
 
             save_gen_terms.onclick = (e) =>{
-                console.log(generated_terms.innerText);
                 copy_to_clipboard(generated_terms.innerText.replace("Generated Terms: [","").replace("]",""))
             }
 
@@ -298,8 +297,7 @@ new_sequence_btn.onclick = (e) =>{
                 if(eq!= "" && terms!= ""){
 
                     terms = parseInt(terms)
-
-                    const res = genCompile.main(eq,terms)
+                    const res = genCompile.main(eq.toLowerCase(),terms)
 
                     generated_terms.innerText = `Generated Terms: [ ${res} ]`
 
