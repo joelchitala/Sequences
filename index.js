@@ -253,6 +253,7 @@ new_sequence_btn.onclick = (e) =>{
                 <div class="bottom-section" style="display: none;">
                     <h4>Results</h4>
                     <p class="generated-terms"></p>
+                    <button id="save_gen_terms">Save generated terms</button>
                     <h4>Tree Diagram</h4>
                     <div class="tree-container">
                         
@@ -260,6 +261,9 @@ new_sequence_btn.onclick = (e) =>{
                 </div>
             `
 
+            const save_gen_terms = sequence_box.querySelector("#save_gen_terms")
+
+        
             const equation_input = sequence_box.querySelector(".equation-input")
 
             const terms_input = sequence_box.querySelector(".terms-input")
@@ -270,6 +274,10 @@ new_sequence_btn.onclick = (e) =>{
 
 
             const sumbit = sequence_box.querySelector(".sumbit")
+
+            save_gen_terms.onclick = (e) =>{
+                console.log(generated_terms.innerText);
+            }
 
             sumbit.onclick = (e) =>{
 
@@ -380,5 +388,9 @@ const combine_seq_arr = (arr) =>{
 // const res = compile.main("2^(n+1)",4)
 
 // console.log(res)
+
+console.log([
+    1,1048576,3486784401,1099511627776,95367431640625,3656158440062976,79792266297612000,1152921504606847000,12157665459056929000,100000000000000000000,672749994932560000000,3.833759992447475e+21,1.90049637748808e+22,8.36682554252848e+22,3.3252567300796506e+23,1.2089258196146292e+24,4.0642314066475725e+24,1.2748236216396078e+25,3.758997345754596e+25,1.048576e+26,2.7821842944695156e+26,7.05429498686404e+26
+].length);
 
 

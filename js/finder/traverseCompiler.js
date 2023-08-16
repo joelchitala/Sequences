@@ -80,6 +80,8 @@ const factorial = (number) =>{
 const sequenceFormula = (sequence) =>{
     let array = traverse(sequence)
 
+    
+
     let i = 0
 
     let product_rule_arr = []
@@ -123,7 +125,6 @@ const sequenceFormula = (sequence) =>{
     array_2.forEach(x=>{
         decompose(x)[0].forEach(token=>{
             array_3.push(token)
-            
         })
     })
     let array_4 = []
@@ -200,6 +201,6 @@ const sequenceFormula = (sequence) =>{
     return array_5.toString().replaceAll(","," ")
 }
 
-console.log(sequenceFormula([1,88,513,1696,4225,8856]));
+// (sequenceFormula([1,88,513,1696,4225,8856]));
 
 export{sequenceFormula, traverse}
