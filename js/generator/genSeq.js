@@ -103,6 +103,7 @@ let getPrecidence = (precidences,opCode) =>{
     }
     return null;
 }
+
 let getLastVal = (array) =>{
     return array[array.length - 1];
 }

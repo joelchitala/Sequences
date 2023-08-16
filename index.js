@@ -1,6 +1,9 @@
 
 import { sequenceFormula, traverse} from "./js/finder/traverseCompiler.js";
 import { compiler } from "./js/generator/genSeq.js";
+import { SequenceCompiler } from "./js/generator/genSeqCompiler.js";
+
+const genCompile = new SequenceCompiler()
 
 const new_sequence_btn = document.querySelector("#new-sequence")
 
@@ -279,7 +282,7 @@ new_sequence_btn.onclick = (e) =>{
 
                     terms = parseInt(terms)
 
-                    const res = compiler(eq,terms)
+                    const res = genCompile.main(eq,terms)
 
                     generated_terms.innerText = `Generated Terms: [ ${res} ]`
 
@@ -371,5 +374,11 @@ const combine_seq_arr = (arr) =>{
     return res
 }
 
-// console.log(combine_seq_arr(compiler("",10)));
+
+// const compile = new SequenceCompiler()
+
+// const res = compile.main("2^(n+1)",4)
+
+// console.log(res)
+
 
