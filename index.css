@@ -31,12 +31,21 @@ header{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
     padding: 0.5rem;
     border-bottom: 1px dashed #262632;
 }
 
 header #logo h1{
     font-family: 'Tilt Prism', cursive;
+}
+
+header #open-sidebar{
+    display: none;
+}
+
+header #open-sidebar i{
+    font-size: 1.75rem;
 }
 
 /* Main Section */
@@ -52,14 +61,29 @@ header #logo h1{
     display: flex;
     flex-direction: column;
     border-right: 1px dashed #262632;
+    position: relative;
+}
+
+
+#main-section  #sidebar #close-sidebar{
+    position: absolute;
+    right: 0.75rem;
+    top: 10px;
+    display: none;
+}
+
+#main-section  #sidebar #close-sidebar i{
+    font-size: 2.5rem;
 }
 
 #sidebar #new-sequence{
+    max-width: 150px;
     padding: 0.75rem;
     margin: 0.5rem auto;
     background-color: #eee;
     cursor: pointer;
     border-radius: 0.5rem;
+    text-align: center;
 }
 
 #sidebar #new-sequence:hover{
@@ -117,6 +141,7 @@ header #logo h1{
 #sidebar #sequence-history .sequence-history-box .controls i:hover{
     color: tomato;
 }
+
 
 #main-section #canvas{
     width: 75%;
@@ -182,7 +207,7 @@ header #logo h1{
 #canvas .sequence-box{
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
+    padding: 1rem;
     box-shadow: 1px 1px 3px #23233230;
 }
 
@@ -216,13 +241,17 @@ header #logo h1{
     flex-direction: column;
 }
 
+#canvas .sequence-box .bottom-section h4{
+    margin: 0.5rem 0;
+}
+
 #canvas .sequence-box .bottom-section .tree-container{
     display: flex;
     flex-direction: column;
 }
 
 #canvas .sequence-box .bottom-section .tree-layer{
-    width: 75%;
+    width: 95%;
     margin: auto;
     display: inline-flex;
     justify-content: center;
@@ -239,6 +268,54 @@ header #logo h1{
 
 #canvas .sequence-box .bottom-section .tree-layer div p{
     margin: auto;
+}
+
+@media screen and (max-width: 1000px) {
+
+    header #open-sidebar{
+        display: block;
+    }
+
+    main{
+        width: 100%;
+        position: relative;
+    }
+    
+    #main-section #sidebar {
+        width: 50%;
+        height: 100%;
+        background-color: #fff;
+        position: absolute;
+        display: none;
+    }
+
+    #main-section  #sidebar #close-sidebar{
+        position: absolute;
+        right: 0.75rem;
+        top: 10px;
+        display: block;
+    }
+    
+    #main-section  #sidebar #close-sidebar i{
+        font-size: 2.5rem;
+    }
+    
+    #main-section #canvas{
+        width: 100%;
+    }
+
+    #canvas-controls div i{
+        font-size: 1.25rem;
+    }
+
+    #canvas-controls div p{
+        font-size: 0.75rem;
+    }
+
+    #canvas .sequence-box .bottom-section .tree-layer div{
+        width: 40px;
+        height: 40px;
+    }
 }
 
 

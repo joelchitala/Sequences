@@ -3,6 +3,13 @@ import { sequenceFormula, traverse} from "./js/finder/traverseCompiler.js";
 import { compiler } from "./js/generator/genSeq.js";
 
 const new_sequence_btn = document.querySelector("#new-sequence")
+
+const sidebar = document.querySelector("#sidebar")
+
+const open_sidebar = document.querySelector("#open-sidebar")
+
+const close_sidebar = document.querySelector("#close-sidebar")
+
 const sequence_history = document.querySelector("#sequence-history")
 const canvas = document.querySelector("#canvas")
 
@@ -15,6 +22,14 @@ const reset_history_box = () =>{
         const title = x.querySelector(".title")
         title.removeAttribute("contenteditable")
     })
+}
+
+open_sidebar.onclick = (e) =>{
+    sidebar.style.display = "block"
+}
+
+close_sidebar.onclick = (e) =>{
+    sidebar.style.display = "none"
 }
 
 new_sequence_btn.onclick = (e) =>{
