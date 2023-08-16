@@ -80,22 +80,42 @@ const factorial = (number) =>{
 const sequenceFormula = (sequence) =>{
     let array = traverse(sequence)
 
-    let product_rule = ""
     let i = 0
 
-    let equate = `${array[0][0]}`
+    let product_rule_arr = []
 
     let array_2 = []
     array.forEach(x=>{
-        if(i != 0){
-            product_rule += `(n-${i})`
-            let num = parseInt(x[0])/factorial(i)
-            array_2.push(open_brackets(`(${num})`+`${product_rule}`))
+        let prod_str = "("
+        
+        if(i > 0){
+            let num = parseFloat(x[0])/factorial(i)
+            if (product_rule_arr.length > 0) {
+                let last_prod = product_rule_arr[product_rule_arr.length-1]
+                let prod_res = open_brackets(`${last_prod}(n-${i})`)
 
-            equate += ` + (${num})`+`${product_rule}`
-        } 
+                
+                let i_2 = 0
+                prod_res.forEach(y=>{
+                    if (i_2 > 0) {
+                        if (y[0] != "-" && y[0] != "+") {
+                            prod_str += "+"
+                        }
+                    }
+                    prod_str += y
+                    i_2++
+                })
+
+                prod_str += ")"
+            }else{
+                prod_str = `(n-${i})`
+            }
+            product_rule_arr.push(prod_str)
+            array_2.push(open_brackets(`(${num})`+`${prod_str}`));
+        }
         i++
     })
+
     let array_3 = []
 
     array_3.push("ADD")
@@ -179,5 +199,7 @@ const sequenceFormula = (sequence) =>{
 
     return array_5.toString().replaceAll(","," ")
 }
+
+console.log(sequenceFormula([1,88,513,1696,4225,8856]));
 
 export{sequenceFormula, traverse}
