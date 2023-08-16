@@ -16,6 +16,15 @@ const close_sidebar = document.querySelector("#close-sidebar")
 const sequence_history = document.querySelector("#sequence-history")
 const canvas = document.querySelector("#canvas")
 
+const copy_to_clipboard = (text) =>{
+    var tempInput = document.createElement("textarea")
+    document.body.appendChild(tempInput)
+    tempInput.value = text
+    tempInput.select();
+    document.execCommand("copy")
+    document.body.removeChild(tempInput)
+}
+
 const reset_history_box = () =>{
     const history_boxes = [...sequence_history.children]
     history_boxes.forEach(x =>{
@@ -166,6 +175,7 @@ new_sequence_btn.onclick = (e) =>{
 
             const tree_container = sequence_box.querySelector(".tree-container")
 
+            
 
             const sumbit = sequence_box.querySelector(".sumbit")
 
@@ -175,12 +185,10 @@ new_sequence_btn.onclick = (e) =>{
 
                 if(terms_input.value != ""){
                     terms_input.value.split(",").forEach(num=> {
-                        array.push(parseInt(num))
+                        array.push(parseFloat(num))
                     });
                     terms_input.setAttribute("disabled",true)
                     sumbit.setAttribute("disabled",true)
-
-                    
                 }else{
                     return
                 }
@@ -277,6 +285,7 @@ new_sequence_btn.onclick = (e) =>{
 
             save_gen_terms.onclick = (e) =>{
                 console.log(generated_terms.innerText);
+                copy_to_clipboard(generated_terms.innerText.replace("[","").replace("]",""))
             }
 
             sumbit.onclick = (e) =>{
