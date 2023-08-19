@@ -80,8 +80,6 @@ const factorial = (number) =>{
 const sequenceFormula = (sequence) =>{
     let array = traverse(sequence)
 
-    
-
     let i = 0
 
     let product_rule_arr = []
@@ -95,8 +93,6 @@ const sequenceFormula = (sequence) =>{
             if (product_rule_arr.length > 0) {
                 let last_prod = product_rule_arr[product_rule_arr.length-1]
                 let prod_res = open_brackets(`${last_prod}(n-${i})`)
-
-                
                 let i_2 = 0
                 prod_res.forEach(y=>{
                     if (i_2 > 0) {
@@ -120,20 +116,26 @@ const sequenceFormula = (sequence) =>{
 
     let array_3 = []
 
-    array_3.push("ADD")
-    array_3.push(""+array[0][0])
+    if (array[0][0] < 0) {
+        array_3.push("SUB")
+        array_3.push(""+array[0][0]*(-1))
+    }else{
+        array_3.push("ADD")
+        array_3.push(""+array[0][0])
+    }
     array_2.forEach(x=>{
         decompose(x)[0].forEach(token=>{
             array_3.push(token)
         })
     })
+
     let array_4 = []
     let idx = 0
     scanner(array_3).forEach(z=>{
             if(!z.includes("-") && !z.includes("+")){
                 if(idx == 0){
                     
-                    if(parseInt(z.split("n")[0]) == 1){
+                    if(parseFloat(z.split("n")[0]) == 1){
                         let str = ""
                         for (let i = 1; i < z.length; i++) {
                             const token = z[i];
@@ -147,7 +149,7 @@ const sequenceFormula = (sequence) =>{
                     }
                 }else{
                     let str = ""
-                    if(parseInt(z.split("n")[0]) == 1 || parseInt(z.split("n")[0]) == -1 ){
+                    if(parseFloat(z.split("n")[0]) == 1 || parseFloat(z.split("n")[0]) == -1 ){
                         for (let i = 1; i < z.length; i++) {
                             const token = z[i];
                             str += token
@@ -165,8 +167,8 @@ const sequenceFormula = (sequence) =>{
                 }
                 
             }else{
-                if(parseInt(z) != 0){
-                    if(parseInt(z) == -1 || parseInt(z) == 1 && z.includes("n")){
+                if(parseFloat(z) != 0){
+                    if(parseFloat(z) == -1 || parseFloat(z) == 1 && z.includes("n")){
                         array_4.push(z.replace("1",""))
                     }else{
                         array_4.push(z)
@@ -182,7 +184,7 @@ const sequenceFormula = (sequence) =>{
     let temp_arr = ""
     array_4.forEach(x=>{
         if(x.includes("n")){
-            if(parseInt(x.split("^")[1]) == 1){
+            if(parseFloat(x.split("^")[1]) == 1){
             array_5.push(x.split("^")[0])
             }else{
             array_5.push(x)
@@ -198,9 +200,10 @@ const sequenceFormula = (sequence) =>{
         array_5.push(""+constant)
     }
 
-    return array_5.toString().replaceAll(","," ")
+
+    return array_5.toString().replaceAll(",","")
 }
 
-// (sequenceFormula([1,88,513,1696,4225,8856]));
+// console.log(sequenceFormula([ 3,8,15,24,35,48 ]));
 
 export{sequenceFormula, traverse}

@@ -269,16 +269,15 @@ const parser = (string,term = 1) =>{
             if(num_string.includes("n")){
                 let split = num_string.split("n")
                 if(split[0] != "" && !operands.includes(split[0])){
-                    parsed_array.push(parseInt(split[0])*term)
+                    parsed_array.push(parseFloat(split[0])*term)
                 }else{
                     parsed_array.push(term)
                 }
             }else{
                 if(num_string != ""){
-                    parsed_array.push(parseInt(num_string))
+                    parsed_array.push(parseFloat(num_string))
                 }
             }
-
             if(sub_count > 0 && token != "-"){
                 if(isEven(sub_count)){
                     parsed_array.push("ADD")
@@ -287,7 +286,6 @@ const parser = (string,term = 1) =>{
                 }
                 sub_count = 0
             }
-
             switch (token) {
                 case "+":
                     parsed_array.push("ADD")
@@ -322,7 +320,6 @@ const parser = (string,term = 1) =>{
                             parsed_array.push("MUL")
                         }
                     }
-                    
                     break;
                 default:
                     break;
@@ -335,7 +332,6 @@ const parser = (string,term = 1) =>{
                     parsed_array.push("ADD")
                 }else{
                     parsed_array.push("SUB")
-
                 }
                 sub_count = 0
             }
@@ -347,13 +343,13 @@ const parser = (string,term = 1) =>{
         if(num_string.includes("n")){
             let split = num_string.split("n")
             if(split[0] != "" && !operands.includes(split[0])){
-                parsed_array.push(parseInt(split[0])*term)
+                parsed_array.push(parseFloat(split[0])*term)
             }else{
                 parsed_array.push(term)
             }
         }else{
             if(num_string != ""){
-                parsed_array.push(parseInt(num_string))
+                parsed_array.push(parseFloat(num_string))
             }
         }
         num_string = ""
@@ -385,7 +381,6 @@ const parser = (string,term = 1) =>{
         }
         index++
     })
-
     return parsed_array_2
 }
 
@@ -394,18 +389,6 @@ const compile = (values,stacks = [],recurse = false) =>{
     let stack = decompose(values)
     let origin = stacks
     let groups = []
-
-    // if(stack.length > 0){
-    //     console.log("STACK \n")
-    //     console.log(stack)
-    // }
-    
-
-    // if(origin.length > 0){
-    //     console.log("ORIGIN \n")
-    //     console.log(origin)
-    // }
-    
     calculate_precidence(stack[0]).forEach(x=>{
         if(!groups.includes(x.group)){
             groups.push(x.group)
@@ -419,7 +402,6 @@ const compile = (values,stacks = [],recurse = false) =>{
         }
     }
     let res = stack[0]
-
     while(groups.length > 0){
         if(groups.length > 1){
             let precidences = calculate_precidence(res)
@@ -490,9 +472,6 @@ const compile = (values,stacks = [],recurse = false) =>{
                                 temp_array.pop()
                                 temp_array.push(execute)
                             }
-                            // execute = exec(res[pr.index-1],pr.OPCODE,res[pr.index+1])
-                            // temp_array.push(execute)
-                            // temp_array = replaceValues(temp_array,[pr.index-1,pr.index],[execute])
                             skip++
                             break;
                             
@@ -520,12 +499,9 @@ const compile = (values,stacks = [],recurse = false) =>{
             })
 
             if(temp_array.length > 0){
-                // console.log(temp_array)
-
                 res = temp_array
                 temp_array = []
             }
-            
             
         }else{
             let precidences = calculate_precidence(res)

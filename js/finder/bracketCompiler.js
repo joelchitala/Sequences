@@ -456,8 +456,8 @@ let compile = (array) =>{
                                     }
                                     if(num_2 != undefined){
                                         if(num_1.includes("n") && num_2.includes("n")){
-                                            let power =  parseInt(num_1.split("n")[1].replace("^",""))+parseInt(num_2.split("n")[1].replace("^",""))
-                                            let coef = parseInt(num_1.split("n")[0].replace("^",""))*parseInt(num_2.split("n")[0].replace("^",""))
+                                            let power =  parseFloat(num_1.split("n")[1].replace("^",""))+parseFloat(num_2.split("n")[1].replace("^",""))
+                                            let coef = parseFloat(num_1.split("n")[0].replace("^",""))*parseFloat(num_2.split("n")[0].replace("^",""))
                                             temp_array.pop()
                                             temp_array.push(coef+"n^"+power)
                                         }else{
@@ -470,13 +470,13 @@ let compile = (array) =>{
                                                 nonPartial_num = num_1
                                             }
                                             if(num_1.includes("n") || num_2.includes("n")){
-                                                let coef = parseInt(partial_num.split("n")[0])*parseInt(nonPartial_num.split("n")[0])
+                                                let coef = parseFloat(partial_num.split("n")[0])*parseFloat(nonPartial_num.split("n")[0])
                                                 temp_array.pop()
                                                 temp_array.push(coef+"n"+partial_num.split("n")[1])
                                             }
 
                                             if(!num_1.includes("n") && !num_2.includes("n")){
-                                                let coef = parseInt(num_1)*parseInt(num_2)
+                                                let coef = parseFloat(num_1)*parseFloat(num_2)
                                                 temp_array.pop()
                                                 temp_array.push(coef)
                                             }
@@ -505,8 +505,8 @@ let compile = (array) =>{
                                     }
                                     if(num_2 != undefined){
                                         if(num_1.includes("n") && num_2.includes("n")){
-                                            let power =  parseInt(num_1.split("n")[1].replace("^",""))-parseInt(num_2.split("n")[1].replace("^",""))
-                                            let coef = parseInt(num_1.split("n")[0].replace("^",""))/parseInt(num_2.split("n")[0].replace("^",""))
+                                            let power =  parseFloat(num_1.split("n")[1].replace("^",""))-parseFloat(num_2.split("n")[1].replace("^",""))
+                                            let coef = parseFloat(num_1.split("n")[0].replace("^",""))/parseFloat(num_2.split("n")[0].replace("^",""))
                                             temp_array.pop()
                                             temp_array.push(coef+"n^"+power)
                                         }else{
@@ -519,13 +519,13 @@ let compile = (array) =>{
                                                 nonPartial_num = num_1
                                             }
                                             if(num_1.includes("n") || num_2.includes("n")){
-                                                let coef = parseInt(partial_num.split("n")[0])/parseInt(nonPartial_num.split("n")[0])
+                                                let coef = parseFloat(partial_num.split("n")[0])/parseFloat(nonPartial_num.split("n")[0])
                                                 temp_array.pop()
                                                 temp_array.push(coef+"n"+partial_num.split("n")[1])
                                             }
 
                                             if(!num_1.includes("n") && !num_2.includes("n")){
-                                                let coef = parseInt(num_1)/parseInt(num_2)
+                                                let coef = parseFloat(num_1)/parseFloat(num_2)
                                                 temp_array.pop()
                                                 temp_array.push(coef)
                                             }
@@ -589,9 +589,9 @@ let compile = (array) =>{
                                                 temp_array.pop()
                                                 let operand = getLastValOffset(temp_array)
                                                     if(operand == "SUB"){
-                                                        temp_array.push(parseInt(num_1.split("n")[0])-parseInt(num_2.split("n")[0])+"n"+num_1.split("n")[1])
+                                                        temp_array.push(parseFloat(num_1.split("n")[0])-parseFloat(num_2.split("n")[0])+"n"+num_1.split("n")[1])
                                                     }else{
-                                                        temp_array.push(parseInt(num_1.split("n")[0])+parseInt(num_2.split("n")[0])+"n"+num_1.split("n")[1])
+                                                        temp_array.push(parseFloat(num_1.split("n")[0])+parseFloat(num_2.split("n")[0])+"n"+num_1.split("n")[1])
                                                     }
                                             }else{
                                                 temp_array.pop()
@@ -604,7 +604,7 @@ let compile = (array) =>{
                                             if(num_1.includes("^") || num_2.includes("^") ){
                                                 if(num_1.split("^")[1] == num_2.split("^")[1]){
                                                     temp_array.pop()
-                                                    temp_array.push(parseInt(num_1.split("^")[0])+parseInt(num_2.split("^")[0]))
+                                                    temp_array.push(parseFloat(num_1.split("^")[0])+parseFloat(num_2.split("^")[0]))
                                                 }else{
                                                     temp_array.pop()
                                                     temp_array.push(num_1)
@@ -617,7 +617,7 @@ let compile = (array) =>{
                                                 temp_array.pop()
                                                 if(getLastVal(temp_array) == "SUB"){
                                                     temp_array.pop()
-                                                    let num_res = -parseInt(num_1)+parseInt(num_2)
+                                                    let num_res = -parseFloat(num_1)+parseFloat(num_2)
                                                     if(num_res < 0){
                                                         temp_array.push("SUB")
                                                     }else{
@@ -626,7 +626,7 @@ let compile = (array) =>{
                                                     temp_array.push(num_res)
                                                 }else{
                                                     temp_array.pop()
-                                                    let num_res = parseInt(num_1)+parseInt(num_2)
+                                                    let num_res = parseFloat(num_1)+parseFloat(num_2)
                                                     temp_array.push("ADD")
                                                     temp_array.push(num_res)
                                                 }
@@ -660,9 +660,9 @@ let compile = (array) =>{
                                                     temp_array.pop()
                                                     let operand = getLastValOffset(temp_array)
                                                     if(operand == "SUB"){
-                                                        temp_array.push(parseInt(num_1.split("n")[0])+parseInt(num_2.split("n")[0])+"n"+num_1.split("n")[1])
+                                                        temp_array.push(parseFloat(num_1.split("n")[0])+parseFloat(num_2.split("n")[0])+"n"+num_1.split("n")[1])
                                                     }else{
-                                                        temp_array.push(parseInt(num_1.split("n")[0])-parseInt(num_2.split("n")[0])+"n"+num_1.split("n")[1])
+                                                        temp_array.push(parseFloat(num_1.split("n")[0])-parseFloat(num_2.split("n")[0])+"n"+num_1.split("n")[1])
                                                     }
                                                 }else{
                                                     temp_array.pop()
@@ -676,7 +676,7 @@ let compile = (array) =>{
                                                     if(num_1.split("^")[1] == num_2.split("^")[1]){
                                                     
                                                         temp_array.pop()
-                                                        temp_array.push(parseInt(num_1.split("^")[0])+parseInt(num_2.split("^")[0]))
+                                                        temp_array.push(parseFloat(num_1.split("^")[0])+parseFloat(num_2.split("^")[0]))
                                                     }else{
                                                         temp_array.pop()
                                                         temp_array.push(num_1)
@@ -690,9 +690,9 @@ let compile = (array) =>{
                                             if(!num_1.includes("n") && !num_2.includes("n")){
                                                 temp_array.pop()
                                                 if(getLastVal(temp_array) == "SUB"){
-                                                    temp_array.push(-parseInt(num_1)-parseInt(num_2))
+                                                    temp_array.push(-parseFloat(num_1)-parseFloat(num_2))
                                                 }else{
-                                                    temp_array.push(parseInt(num_1)-parseInt(num_2))
+                                                    temp_array.push(parseFloat(num_1)-parseFloat(num_2))
                                                 }
                                             }
                                         }
@@ -736,6 +736,7 @@ let compile = (array) =>{
 }
 
 const multplex = (array,resurse = false,prev = []) =>{
+    console.log(array);
     let result = []
     let arr,org;
 
@@ -757,9 +758,6 @@ const multplex = (array,resurse = false,prev = []) =>{
     length--
 
     let res = []
-
-    
-
     let index = 0
 
     while(length > 0){
@@ -884,6 +882,8 @@ const multplex = (array,resurse = false,prev = []) =>{
     if(arr.length == 1){
         result.push(arr[0])
     }
+
+    console.log(result);
     return getLastVal(result)
 }
 
@@ -892,7 +892,7 @@ const getHighestPower = (array) =>{
 
     array.forEach(token=>{
         if(token.includes("n")){
-            let coef = parseInt(token.split("^")[1])
+            let coef = parseFloat(token.split("^")[1])
             if(pwr < coef){
                 pwr = coef
             }
@@ -909,7 +909,7 @@ const scanner = (array) =>{
         let temp = []
         array.forEach(token=>{
             if(token.includes("n")){
-                let coef = parseInt(token.split("^")[1])
+                let coef = parseFloat(token.split("^")[1])
                 if(coef == pwr){
                     if(idx == 0){
                         temp.push("ADD")
@@ -929,7 +929,7 @@ const scanner = (array) =>{
                 results.push(num)
             }else{
                 if(index != 0){
-                    if(parseInt(num.split("n")[0]) != 0 ){
+                    if(parseFloat(num.split("n")[0]) != 0 ){
                        
                         if(!num.includes("+")){
                             results.push(num)
@@ -951,7 +951,7 @@ const scanner = (array) =>{
                 if(array[idx_1-1] == "SUB"){
                     let num;
                     if(getLastVal(results) != NaN){
-                        // num = parseInt(getLastVal(results)) + parseInt(token);
+                        // num = parseFloat(getLastVal(results)) + parseFloat(token);
                         console.log()
                     }
                     if(num == undefined){
@@ -967,7 +967,7 @@ const scanner = (array) =>{
                     let num;
                     if(!getLastVal(results).includes("n")){
                         if(getLastVal(results) != NaN){
-                            // num = parseInt(getLastVal(results)) + parseInt(token);
+                            // num = parseFloat(getLastVal(results)) + parseFloat(token);
                         }
                     }
                     if(num == undefined){
@@ -1016,6 +1016,8 @@ let open_brackets = (equation,toString = false) =>{
             array_2.push(x)
         }
     })
+    
+    // console.log(multplex(array_2));
     if(toString){
         return scanner(multplex(array_2)).toString().replaceAll(",","")
     }else{

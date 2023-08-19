@@ -296,13 +296,13 @@ new_sequence_btn.onclick = (e) =>{
 
                 if(eq!= "" && terms!= ""){
 
-                    terms = parseInt(terms)
+                    terms = parseFloat(terms)
                     const res = genCompile.main(eq.toLowerCase(),terms)
 
                     generated_terms.innerText = `Generated Terms: [ ${res} ]`
 
                     res.forEach(num=> {
-                        array.push(parseInt(num))
+                        array.push(parseFloat(num))
                     });
 
                     equation_input.setAttribute("disabled",true)
@@ -396,8 +396,5 @@ const combine_seq_arr = (arr) =>{
 
 // console.log(res)
 
-console.log([
-    1,1048576,3486784401,1099511627776,95367431640625,3656158440062976,79792266297612000,1152921504606847000,12157665459056929000,100000000000000000000,672749994932560000000,3.833759992447475e+21,1.90049637748808e+22,8.36682554252848e+22,3.3252567300796506e+23,1.2089258196146292e+24,4.0642314066475725e+24,1.2748236216396078e+25,3.758997345754596e+25,1.048576e+26,2.7821842944695156e+26,7.05429498686404e+26
-].length);
-
+// console.log(sequenceFormula([ 0.0667,0.1334,0.2001,0.2668 ]));
 
